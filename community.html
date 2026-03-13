@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICoop Community | Connect. Collaborate. Succeed.</title>
+    <meta name="description" content="Join a community built for entrepreneurs, developers, and industry experts to share resources, exchange ideas, and grow together.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Trust Strip */
+        .trust-strip {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 16px 0;
+            text-align: center;
+        }
+
+        .trust-strip p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Cards Section */
+        .cards-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--bg-light);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* Steps Section */
+        .steps-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 24px;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Standards Section */
+        .standards-section {
+            padding: 60px 0;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .standards-box {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 32px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .standards-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .standards-box p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .standards-box a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            padding: 80px 0;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .testimonial cite {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            background: var(--bg-light);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .final-cta p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <a href="/" class="logo">AICoop</a>
+            <ul class="nav-links">
+                <li><a href="/community" class="active">Community</a></li>
+                <li><a href="/enterprise">Enterprise</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero-label">AICoop Community</span>
+            <h1>Connect. Collaborate. Succeed.</h1>
+            <p>Join a community built for entrepreneurs, developers, and industry experts to share resources, exchange ideas, and grow together.</p>
+            <div class="btn-group" style="justify-content: center;">
+                <a href="#join" class="btn btn-primary" data-track="cta_click" data-cta="join_community_hero">Join the Community (Free)</a>
+                <a href="/contact" class="btn btn-secondary" data-track="cta_click" data-cta="contact_hero">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <section class="trust-strip">
+        <div class="container">
+            <p>Based in Walton County, Florida — built to strengthen a vibrant tech community (virtual + physical).</p>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section class="cards-section">
+        <div class="container">
+            <h2 class="section-title">What You Get</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">&#129309;</div>
+                    <h3>Collaborative Resource Sharing</h3>
+                    <p>Share resources, knowledge, and ideas to drive tech success together.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">&#127919;</div>
+                    <h3>Expert Mentorship Programs</h3>
+                    <p>Access industry experts and get actionable guidance for your projects.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">&#128187;</div>
+                    <h3>Developer Support Community</h3>
+                    <p>Get support from fellow developers in a thriving tech community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="steps-section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Create Your Profile</h3>
+                    <p>Share your skills and what you're building</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Join Discussions</h3>
+                    <p>Ask questions and engage with the community</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Share Resources</h3>
+                    <p>Contribute a resource or lesson learned</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Connect & Grow</h3>
+                    <p>Find mentors and collaborators</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Standards -->
+    <section class="standards-section">
+        <div class="container">
+            <div class="standards-box">
+                <h2>Community Standards</h2>
+                <p>We're serious about high-signal collaboration: respectful discussion, practical help, and clean moderation.</p>
+                <a href="/faq">Read our FAQ + Policies &#8594;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="testimonial">
+                <blockquote>"A game-changer for our team. The collaborative approach and valuable resources have transformed how we work. Being part of the Walton County tech community has opened so many doors."</blockquote>
+                <cite>— Community Member</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="join">
+        <div class="container">
+            <h2>Build faster with people who actually ship.</h2>
+            <p>Join entrepreneurs, developers, and experts who are building the future together.</p>
+            <div class="btn-group" style="justify-content: center;">
+                <a href="/join" class="btn btn-primary" data-track="cta_click" data-cta="join_community_footer">Join the Community (Free)</a>
+                <a href="/contact" class="btn btn-secondary" data-track="cta_click" data-cta="contact_footer">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AICoop. All rights reserved. | Walton County, Florida</p>
+        </div>
+    </footer>
+
+    <!-- Analytics Event Tracking -->
+    <script>
+        // Event tracking utility
+        function trackEvent(eventName, properties = {}) {
+            console.log('Track Event:', eventName, properties);
+        }
+
+        // Track CTA clicks
+        document.querySelectorAll('[data-track="cta_click"]').forEach(el => {
+            el.addEventListener('click', function(e) {
+                trackEvent('cta_click', {
+                    cta_name: this.dataset.cta,
+                    page: 'community',
+                    button_text: this.textContent.trim()
+                });
+            });
+        });
+
+        // Track page view
+        trackEvent('page_view', {
+            page: 'community',
+            title: document.title
+        });
+
+        // Track scroll depth
+        let scrollDepths = [25, 50, 75, 100];
+        let trackedDepths = [];
+
+        window.addEventListener('scroll', function() {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+
+            scrollDepths.forEach(depth => {
+                if (scrollPercent >= depth && !trackedDepths.includes(depth)) {
+                    trackedDepths.push(depth);
+                    trackEvent('scroll_depth', {
+                        page: 'community',
+                        depth: depth
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
