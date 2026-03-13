@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICoop Enterprise | Private Knowledge Copilot for Engineering Teams</title>
+    <meta name="description" content="Turn internal docs, tickets, and engineering notes into fast answers with citations—so engineers ship more and search less.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --accent: #059669;
+            --accent-light: #d1fae5;
+            --warning: #dc2626;
+            --warning-light: #fee2e2;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--text-dark) 0%, #334155 100%);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .hero-visual {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .hero-visual-content {
+            background: var(--white);
+            color: var(--text-dark);
+            border-radius: 8px;
+            padding: 24px;
+            text-align: left;
+        }
+
+        .hero-visual-content .query {
+            background: var(--bg-light);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .hero-visual-content .answer {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .hero-visual-content .citation {
+            font-size: 0.85rem;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        /* Who It's For */
+        .audience-section {
+            padding: 60px 0;
+            background: var(--white);
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .audience-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .audience-icon {
+            font-size: 1.5rem;
+        }
+
+        .audience-item p {
+            font-weight: 500;
+        }
+
+        /* Pain Section */
+        .pain-section {
+            padding: 80px 0;
+            background: var(--warning-light);
+        }
+
+        .pain-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 48px;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .pain-item {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning);
+        }
+
+        .pain-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--warning);
+        }
+
+        .pain-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Capabilities Section */
+        .capabilities-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .capability {
+            display: flex;
+            gap: 20px;
+            padding: 28px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .capability-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .capability h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .capability p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 60px 0;
+            background: var(--bg-light);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 24px;
+        }
+
+        .trust-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .trust-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .trust-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Pilot Section */
+        .pilot-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .pilot-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .pilot-info h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .pilot-info p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+
+        .pilot-timeline {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 32px;
+            border: 2px solid var(--primary);
+        }
+
+        .pilot-timeline h3 {
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .timeline-week {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            height: fit-content;
+        }
+
+        .timeline-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .final-cta p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+
+        .final-cta .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .final-cta .btn-primary:hover {
+            background: var(--primary-light);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .audience-grid,
+            .pain-grid,
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pilot-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <a href="/" class="logo">AICoop</a>
+            <ul class="nav-links">
+                <li><a href="/community">Community</a></li>
+                <li><a href="/enterprise" class="active">Enterprise</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <span class="hero-label">AICoop Enterprise</span>
+                    <h1>Private Knowledge Copilot for Engineering Teams</h1>
+                    <p>Turn internal docs, tickets, and engineering notes into fast answers with citations—so engineers ship more and search less.</p>
+                    <div class="btn-group">
+                        <a href="#pilot" class="btn btn-primary" data-track="cta_click" data-cta="request_pilot_hero">Request a 30-Day Pilot</a>
+                        <a href="#pilot" class="btn btn-secondary" data-track="cta_click" data-cta="get_plan_hero">Get the 1-Page Pilot Plan</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-visual-content">
+                        <div class="query">"How do we handle rate limiting in the payments API?"</div>
+                        <div class="answer">Rate limiting uses token bucket algorithm with 100 req/min per client. Retry with exponential backoff when receiving 429 responses.</div>
+                        <div class="citation">&#128196; Source: payments-api-design.md (line 47)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For -->
+    <section class="audience-section">
+        <div class="container">
+            <div class="audience-grid">
+                <div class="audience-item">
+                    <span class="audience-icon">&#128736;&#65039;</span>
+                    <p>Platform / DevEx teams</p>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-icon">&#128104;&#8205;&#128188;</span>
+                    <p>Engineering managers tired of repeat questions</p>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-icon">&#128193;</span>
+                    <p>Teams with scattered docs across tools and repos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Pain -->
+    <section class="pain-section">
+        <div class="container">
+            <h2>Most engineering orgs lose hours/week per engineer to:</h2>
+            <div class="pain-grid">
+                <div class="pain-item">
+                    <h3>Doc Hunting</h3>
+                    <p>Searching internal docs and past decisions across Notion, Confluence, GitHub, and Slack threads</p>
+                </div>
+                <div class="pain-item">
+                    <h3>Repeat Questions</h3>
+                    <p>Re-answering the same questions in chat—interrupting deep work every time</p>
+                </div>
+                <div class="pain-item">
+                    <h3>Tribal Knowledge</h3>
+                    <p>Onboarding delays because knowledge lives in people's heads, not searchable systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What It Does -->
+    <section class="capabilities-section">
+        <div class="container">
+            <h2 class="section-title">What It Does</h2>
+            <div class="capabilities-grid">
+                <div class="capability">
+                    <div class="capability-number">1</div>
+                    <div>
+                        <h3>Private RAG with Citations</h3>
+                        <p>Answers link back to the exact internal source—doc, page, or thread snippet. No black-box responses.</p>
+                    </div>
+                </div>
+                <div class="capability">
+                    <div class="capability-number">2</div>
+                    <div>
+                        <h3>Knowledge Hygiene</h3>
+                        <p>Auto-tagging + deduplication so your corpus improves over time. Less noise, more signal.</p>
+                    </div>
+                </div>
+                <div class="capability">
+                    <div class="capability-number">3</div>
+                    <div>
+                        <h3>Guardrails Built In</h3>
+                        <p>Abstains when not confident; routes to humans. No hallucinations passed off as answers.</p>
+                    </div>
+                </div>
+                <div class="capability">
+                    <div class="capability-number">4</div>
+                    <div>
+                        <h3>Adoption Analytics</h3>
+                        <p>Usage metrics, top questions, deflection rate, time saved. CFO-defensible ROI from day one.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Trust -->
+    <section class="trust-section">
+        <div class="container">
+            <h2 class="section-title">Enterprise-Ready</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">&#128274;</div>
+                    <h3>Private Workspace Isolation</h3>
+                    <p>Your data stays in your workspace. No cross-tenant contamination.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">&#9881;&#65039;</div>
+                    <h3>Admin Controls for Sources</h3>
+                    <p>Choose exactly what gets indexed. Full control over your knowledge base.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">&#128203;</div>
+                    <h3>Audit-Friendly Logs</h3>
+                    <p>Who asked what, which sources were used. Complete transparency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Pilot -->
+    <section class="pilot-section" id="pilot">
+        <div class="container">
+            <div class="pilot-content">
+                <div class="pilot-info">
+                    <h2>30-Day Pilot</h2>
+                    <p>A structured pilot designed to prove value fast. You'll have CFO-defensible ROI data in 30 days—or we'll part as friends.</p>
+                    <div class="btn-group">
+                        <a href="/contact?type=pilot" class="btn btn-primary" data-track="cta_click" data-cta="request_pilot_section">Request a 30-Day Pilot</a>
+                    </div>
+                </div>
+                <div class="pilot-timeline">
+                    <h3>Pilot Deliverables</h3>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Week 1</span>
+                        <div class="timeline-content">
+                            <h4>Ingest + Validate</h4>
+                            <p>Connect sources, define "approved knowledge," validate retrieval quality</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Week 2</span>
+                        <div class="timeline-content">
+                            <h4>Small Cohort Launch</h4>
+                            <p>Deploy to a focused engineering team, collect baseline metrics</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Week 3</span>
+                        <div class="timeline-content">
+                            <h4>Expand + Tune</h4>
+                            <p>Scale to more users, refine retrieval and guardrails based on feedback</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Week 4</span>
+                        <div class="timeline-content">
+                            <h4>ROI Report + Decision</h4>
+                            <p>Full analytics report, time saved calculations, rollout recommendation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Stop paying engineers to search.</h2>
+            <p>Let them ship instead.</p>
+            <a href="/contact?type=pilot" class="btn btn-primary" data-track="cta_click" data-cta="request_pilot_footer">Request a 30-Day Pilot</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AICoop. All rights reserved. | Walton County, Florida</p>
+        </div>
+    </footer>
+
+    <!-- Analytics Event Tracking -->
+    <script>
+        // Event tracking utility
+        function trackEvent(eventName, properties = {}) {
+            console.log('Track Event:', eventName, properties);
+        }
+
+        // Track CTA clicks
+        document.querySelectorAll('[data-track="cta_click"]').forEach(el => {
+            el.addEventListener('click', function(e) {
+                trackEvent('cta_click', {
+                    cta_name: this.dataset.cta,
+                    page: 'enterprise',
+                    button_text: this.textContent.trim()
+                });
+            });
+        });
+
+        // Track page view
+        trackEvent('page_view', {
+            page: 'enterprise',
+            title: document.title
+        });
+
+        // Track scroll depth
+        let scrollDepths = [25, 50, 75, 100];
+        let trackedDepths = [];
+
+        window.addEventListener('scroll', function() {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+
+            scrollDepths.forEach(depth => {
+                if (scrollPercent >= depth && !trackedDepths.includes(depth)) {
+                    trackedDepths.push(depth);
+                    trackEvent('scroll_depth', {
+                        page: 'enterprise',
+                        depth: depth
+                    });
+                }
+            });
+        });
+
+        // Track time on page
+        let timeOnPage = 0;
+        const timeThresholds = [30, 60, 120, 300]; // seconds
+        let trackedTimes = [];
+
+        setInterval(() => {
+            timeOnPage++;
+            timeThresholds.forEach(threshold => {
+                if (timeOnPage >= threshold && !trackedTimes.includes(threshold)) {
+                    trackedTimes.push(threshold);
+                    trackEvent('time_on_page', {
+                        page: 'enterprise',
+                        seconds: threshold
+                    });
+                }
+            });
+        }, 1000);
+
+        // Track pilot section visibility (intent signal)
+        const pilotSection = document.getElementById('pilot');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    trackEvent('section_viewed', {
+                        page: 'enterprise',
+                        section: 'pilot'
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(pilotSection);
+    </script>
+</body>
+</html>
