@@ -530,7 +530,7 @@
                     <div class="hero-visual-content">
                         <div class="query">"How do we handle rate limiting in the payments API?"</div>
                         <div class="answer">Rate limiting uses token bucket algorithm with 100 req/min per client. Retry with exponential backoff when receiving 429 responses.</div>
-                        <div class="citation">&#128196; Source: payments-api-design.md (line 47)</div>
+                        <div class="citation">📄 Source: payments-api-design.md (line 47)</div>
                     </div>
                 </div>
             </div>
@@ -542,15 +542,15 @@
         <div class="container">
             <div class="audience-grid">
                 <div class="audience-item">
-                    <span class="audience-icon">&#128736;&#65039;</span>
+                    <span class="audience-icon">🛠️</span>
                     <p>Platform / DevEx teams</p>
                 </div>
                 <div class="audience-item">
-                    <span class="audience-icon">&#128104;&#8205;&#128188;</span>
+                    <span class="audience-icon">👨‍💼</span>
                     <p>Engineering managers tired of repeat questions</p>
                 </div>
                 <div class="audience-item">
-                    <span class="audience-icon">&#128193;</span>
+                    <span class="audience-icon">📁</span>
                     <p>Teams with scattered docs across tools and repos</p>
                 </div>
             </div>
@@ -621,17 +621,17 @@
             <h2 class="section-title">Enterprise-Ready</h2>
             <div class="trust-grid">
                 <div class="trust-item">
-                    <div class="trust-icon">&#128274;</div>
+                    <div class="trust-icon">🔒</div>
                     <h3>Private Workspace Isolation</h3>
                     <p>Your data stays in your workspace. No cross-tenant contamination.</p>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-icon">&#9881;&#65039;</div>
+                    <div class="trust-icon">⚙️</div>
                     <h3>Admin Controls for Sources</h3>
                     <p>Choose exactly what gets indexed. Full control over your knowledge base.</p>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-icon">&#128203;</div>
+                    <div class="trust-icon">📋</div>
                     <h3>Audit-Friendly Logs</h3>
                     <p>Who asked what, which sources were used. Complete transparency.</p>
                 </div>
@@ -705,7 +705,14 @@
     <script>
         // Event tracking utility
         function trackEvent(eventName, properties = {}) {
+            // Wire this to your analytics provider (GA4, Mixpanel, Amplitude, etc.)
             console.log('Track Event:', eventName, properties);
+
+            // Example: Google Analytics 4
+            // gtag('event', eventName, properties);
+
+            // Example: Mixpanel
+            // mixpanel.track(eventName, properties);
         }
 
         // Track CTA clicks

@@ -394,7 +394,7 @@
     <!-- Trust Strip -->
     <section class="trust-strip">
         <div class="container">
-            <p>Based in Walton County, Florida — built to strengthen a vibrant tech community (virtual + physical).</p>
+            <p>📍 Based in Walton County, Florida — built to strengthen a vibrant tech community (virtual + physical).</p>
         </div>
     </section>
 
@@ -404,17 +404,17 @@
             <h2 class="section-title">What You Get</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-icon">&#129309;</div>
+                    <div class="card-icon">🤝</div>
                     <h3>Collaborative Resource Sharing</h3>
                     <p>Share resources, knowledge, and ideas to drive tech success together.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">&#127919;</div>
+                    <div class="card-icon">🎯</div>
                     <h3>Expert Mentorship Programs</h3>
                     <p>Access industry experts and get actionable guidance for your projects.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">&#128187;</div>
+                    <div class="card-icon">💻</div>
                     <h3>Developer Support Community</h3>
                     <p>Get support from fellow developers in a thriving tech community.</p>
                 </div>
@@ -457,7 +457,7 @@
             <div class="standards-box">
                 <h2>Community Standards</h2>
                 <p>We're serious about high-signal collaboration: respectful discussion, practical help, and clean moderation.</p>
-                <a href="/faq">Read our FAQ + Policies &#8594;</a>
+                <a href="/faq">Read our FAQ + Policies →</a>
             </div>
         </div>
     </section>
@@ -495,7 +495,14 @@
     <script>
         // Event tracking utility
         function trackEvent(eventName, properties = {}) {
+            // Wire this to your analytics provider (GA4, Mixpanel, Amplitude, etc.)
             console.log('Track Event:', eventName, properties);
+
+            // Example: Google Analytics 4
+            // gtag('event', eventName, properties);
+
+            // Example: Mixpanel
+            // mixpanel.track(eventName, properties);
         }
 
         // Track CTA clicks
