@@ -11,4 +11,5 @@ test('deployment bundle excludes the unfinished agreement and local-only review 
   assert.match(ignore, /^content-audit\/$/m);
   assert.match(ignore, /^docs\/$/m);
   assert.match(ignore, /^test\/$/m);
+  assert.match(ignore, /^rollback\/$/m);
 });

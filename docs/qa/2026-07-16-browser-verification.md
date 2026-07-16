@@ -13,7 +13,7 @@ The following release command completed successfully after the final content and
 
 ```text
 npm run check
-29 tests passed, 0 failed
+32 tests passed, 0 failed
 Site check passed: 11 HTML pages, 190 internal links, 11 external links.
 ```
 
@@ -61,6 +61,8 @@ The isolated Vercel staging project reached `Ready`. The deployed home, Connect 
 - sitemap served as XML and limited to the 10 approved canonical routes
 
 The production domain still returned the existing Durable site, including HTTP 200 on the insecure `http://` origin. No DNS, domain alias, or live-site mutation was made during staging verification.
+
+A pre-cutover public rollback baseline captured 197 Durable responses with HTTP 200 status, per-file SHA-256 checksums, response-header evidence, Durable public identifiers, and current DNS targets. The compressed archive checksum was independently verified. The archive is intentionally excluded from Git and Vercel; it does not replace a platform-native Durable account export.
 
 ## Visual evidence
 

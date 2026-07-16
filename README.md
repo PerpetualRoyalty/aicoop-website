@@ -16,9 +16,10 @@ npm run build
 npm test
 npm run check
 npm run serve
+npm run snapshot:live -- --out rollback/durable-public-YYYY-MM-DD
 ```
 
-`npm run build` writes the release to `dist/`. `npm run check` rebuilds, runs the automated tests, and audits the generated pages for broken links, metadata, heading structure, accessible controls, iframe titles, unsupported claims, and sitemap coverage. `npm run serve` exposes the built site at `http://127.0.0.1:4173` and returns a real 404 response for missing paths.
+`npm run build` writes the release to `dist/`. `npm run check` rebuilds, runs the automated tests, and audits the generated pages for broken links, metadata, heading structure, accessible controls, iframe titles, unsupported claims, and sitemap coverage. `npm run serve` exposes the built site at `http://127.0.0.1:4173` and returns a real 404 response for missing paths. `npm run snapshot:live` captures the current public Durable routes, response headers, and checksums into an ignored local rollback directory; it is not a substitute for a Durable account export.
 
 ## Source structure
 
@@ -28,6 +29,7 @@ npm run serve
 - `src/config/` — canonical site and security-header contracts
 - `scripts/build.mjs` — deterministic static build
 - `scripts/check-site.mjs` — release-site crawler and contract audit
+- `scripts/capture-live-baseline.mjs` — public pre-cutover snapshot and checksum manifest
 - `scripts/audit-legacy-content.mjs` — current blog sitemap inventory and risk classification
 - `content-audit/` — URL-level review queue for the 189 legacy blog pages
 - `test/` — Node built-in tests

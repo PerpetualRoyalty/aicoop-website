@@ -7,7 +7,8 @@
     "build": "node scripts/build.mjs",
     "test": "node --test",
     "check": "npm run build && npm test && node scripts/check-site.mjs",
-    "serve": "node scripts/serve.mjs"
+    "serve": "node scripts/serve.mjs",
+    "snapshot:live": "node scripts/capture-live-baseline.mjs"
   },
   "engines": {
     "node": ">=22"

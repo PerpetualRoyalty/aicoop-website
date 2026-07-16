@@ -23,6 +23,7 @@ The existing site at `https://aicoopai.com/` has not been changed. The staging a
 - upload exclusions for the unfinished agreement and local audit artifacts
 - history-preserving local feature branch connected to the existing public `PerpetualRoyalty/aicoop-website` repository
 - existing MIT license retained from the prior repository
+- ignored 197-response Durable public baseline plus a verified SHA-256 archive in `rollback/`
 
 ## Required production decisions
 
@@ -30,7 +31,7 @@ These are ownership decisions rather than code defects. Do not attach `aicoopai.
 
 1. **Production operator:** provide the exact legal or individual operator name and a mailing or registered contact appropriate for the Privacy and Terms pages.
 2. **Legal approval:** have qualified counsel approve the operator, limitation-of-liability, governing-law, and dispute language. The public draft intentionally does not invent those provisions.
-3. **Rollback:** export or otherwise preserve the current Durable site and confirm who can restore it. Record the last known-good live state before changing DNS or aliases.
+3. **Platform rollback authority:** the public 197-response baseline, DNS evidence, Durable identifiers, and verified local archive are captured. Preserve the Durable account and confirm who can restore its platform configuration because a public snapshot is not a native account export.
 4. **Cutover authority:** confirm the person authorized to change the live domain and whether DNS, Cloudflare, or Durable settings must be removed or retained.
 5. **GitHub authentication:** refresh the invalid `PerpetualRoyalty` GitHub CLI credential so `agent/trust-first-rebuild` can be pushed and opened as a draft pull request against the existing public repository.
 
@@ -38,7 +39,7 @@ These are ownership decisions rather than code defects. Do not attach `aicoopai.
 
 1. Insert the confirmed operator and counsel-approved language, then rerun `npm run check` and the browser checks.
 2. Push `agent/trust-first-rebuild` to `PerpetualRoyalty/aicoop-website` and review the draft pull request before merging to `main`.
-3. Capture the current Durable rollback reference and live DNS/alias state.
+3. Recheck the verified rollback archive and preserve the current Durable account plus live DNS/alias state.
 4. Attach `aicoopai.com` and `www.aicoopai.com` to the verified Vercel project without changing the build artifact.
 5. Confirm HTTPS, apex and `www` canonicalization, security headers, every canonical route, 404, sitemap, social image, favicon, Calendly, and Google Form on the real domain.
 6. Confirm `http://aicoopai.com/` redirects to HTTPS; the existing Durable site currently returns HTTP 200 and does not meet this gate.
