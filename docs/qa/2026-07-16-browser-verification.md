@@ -64,6 +64,14 @@ The production domain still returned the existing Durable site, including HTTP 2
 
 A pre-cutover public rollback baseline captured 197 Durable responses with HTTP 200 status, per-file SHA-256 checksums, response-header evidence, Durable public identifiers, and current DNS targets. The compressed archive checksum was independently verified. The archive is intentionally excluded from Git and Vercel; it does not replace a platform-native Durable account export.
 
+## Owner-access audit
+
+- The shared Chrome session was authenticated to Durable and the AiCoOpAI workspace was present.
+- Durable showed the website as published and `https://aicoopai.com` as the connected public domain.
+- The available Namecheap session redirected the domain-control URL to login, so authoritative DNS access and cutover authority remain unverified.
+- GitHub CLI authentication for `PerpetualRoyalty` remained invalid; device authorization was initiated but not completed during this audit.
+- No DNS, domain, Durable, GitHub, or production-site setting was changed.
+
 ## Visual evidence
 
 - `screenshots/staging-home-desktop.png` — deployed desktop home page
@@ -72,4 +80,4 @@ A pre-cutover public rollback baseline captured 197 Durable responses with HTTP 
 
 ## Release decision
 
-The replacement artifact passes the technical release gates. Production cutover remains intentionally gated on the confirmed legal operator and mailing contact, counsel review of the operator/liability/governing-law terms, confirmation of the current Durable export or rollback path, and explicit domain-cutover authority. Unsupported legacy blog pages remain unpublished; their 189 URL-level evidence requirements are preserved in `content-audit/legacy-blog-inventory.csv`.
+The replacement artifact passes the technical release gates. Production cutover remains intentionally gated on the confirmed legal operator and mailing contact, counsel review of the operator/liability/governing-law terms, confirmation of the native Durable restore procedure, completed GitHub authorization, authenticated Namecheap access, and explicit domain-cutover authority. Unsupported legacy blog pages remain unpublished; their 189 URL-level evidence requirements are preserved in `content-audit/legacy-blog-inventory.csv`.

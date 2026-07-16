@@ -2,7 +2,7 @@
 
 This workspace contains a dependency-free static replacement for `aicoopai.com`. It implements the approved trust-first direction: a practical Florida AI community and resource hub that describes only services available today.
 
-The original Durable website remains live. The verified replacement is prepared on `agent/trust-first-rebuild` and connected to the existing public repository at `PerpetualRoyalty/aicoop-website`. The branch preserves the earlier prototype history and its MIT license; GitHub authentication must be refreshed before the branch and draft pull request can be published.
+The original Durable website remains live. The verified replacement is prepared on `agent/trust-first-rebuild` and connected to the existing public repository at `PerpetualRoyalty/aicoop-website`. The branch preserves the earlier prototype history and its MIT license; GitHub authentication must be refreshed before the branch and draft pull request can be published. Read-only browser verification confirmed authenticated access to the AiCoOpAI Durable workspace and its connected `aicoopai.com` domain. The available Namecheap session is signed out, so DNS changes still require owner login and approval.
 
 ## Requirements
 
@@ -49,8 +49,8 @@ The build is compatible with Vercel static hosting through `vercel.json`. Before
 
 1. Refresh GitHub authentication, push `agent/trust-first-rebuild`, and review the focused replacement pull request.
 2. Reconfirm the verified Vercel staging artifact and browser QA after any review changes.
-3. Confirm the current Durable configuration and export or rollback path.
-4. Confirm DNS, domain attachment, canonical host, and HTTPS behavior.
+3. Preserve the authenticated Durable workspace and confirm its native export or restore procedure; the public snapshot alone is not a platform backup.
+4. Sign in to the authoritative Namecheap account, confirm cutover authority, and then verify DNS, domain attachment, canonical host, and HTTPS behavior.
 5. Deploy production and verify every canonical route, 404 behavior, headers, forms, embeds, sitemap, and external links.
 6. Submit `/sitemap.xml` in Google Search Console and monitor removals, redirects, and indexing.
 7. Roll back to the prior verified deployment if any release gate fails.
