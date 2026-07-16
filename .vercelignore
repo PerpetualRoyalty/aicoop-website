@@ -1,0 +1,10 @@
+.git/
+.vercel/
+node_modules/
+dist/
+docs/
+content-audit/
+test/
+tools/
+WORK TO EARN AGREEMENT.docx
+*.log
