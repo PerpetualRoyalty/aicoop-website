@@ -21,7 +21,8 @@ The existing site at `https://aicoopai.com/` has not been changed. The staging a
 - inventory and risk classification of all 189 legacy blog URLs
 - isolated staging deployment and deployed browser/header verification
 - upload exclusions for the unfinished agreement and local audit artifacts
-- local source-control baseline suitable for a remote repository
+- history-preserving local feature branch connected to the existing public `PerpetualRoyalty/aicoop-website` repository
+- existing MIT license retained from the prior repository
 
 ## Required production decisions
 
@@ -31,12 +32,12 @@ These are ownership decisions rather than code defects. Do not attach `aicoopai.
 2. **Legal approval:** have qualified counsel approve the operator, limitation-of-liability, governing-law, and dispute language. The public draft intentionally does not invent those provisions.
 3. **Rollback:** export or otherwise preserve the current Durable site and confirm who can restore it. Record the last known-good live state before changing DNS or aliases.
 4. **Cutover authority:** confirm the person authorized to change the live domain and whether DNS, Cloudflare, or Durable settings must be removed or retained.
-5. **Source remote:** choose the GitHub owner, repository name, and visibility. Keep the Vercel project linked to that exact deploy root after the initial source push.
+5. **GitHub authentication:** refresh the invalid `PerpetualRoyalty` GitHub CLI credential so `agent/trust-first-rebuild` can be pushed and opened as a draft pull request against the existing public repository.
 
 ## Safe cutover sequence
 
 1. Insert the confirmed operator and counsel-approved language, then rerun `npm run check` and the browser checks.
-2. Commit and push the exact verified source to the approved private repository.
+2. Push `agent/trust-first-rebuild` to `PerpetualRoyalty/aicoop-website` and review the draft pull request before merging to `main`.
 3. Capture the current Durable rollback reference and live DNS/alias state.
 4. Attach `aicoopai.com` and `www.aicoopai.com` to the verified Vercel project without changing the build artifact.
 5. Confirm HTTPS, apex and `www` canonicalization, security headers, every canonical route, 404, sitemap, social image, favicon, Calendly, and Google Form on the real domain.

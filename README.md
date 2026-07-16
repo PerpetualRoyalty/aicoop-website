@@ -2,7 +2,7 @@
 
 This workspace contains a dependency-free static replacement for `aicoopai.com`. It implements the approved trust-first direction: a practical Florida AI community and resource hub that describes only services available today.
 
-The original Durable website remains live. This workspace was not a Git repository when the replacement was created, so there is no inherited history, branch, remote, or deployment link. Establish source control before production cutover.
+The original Durable website remains live. The verified replacement is prepared on `agent/trust-first-rebuild` and connected to the existing public repository at `PerpetualRoyalty/aicoop-website`. The branch preserves the earlier prototype history and its MIT license; GitHub authentication must be refreshed before the branch and draft pull request can be published.
 
 ## Requirements
 
@@ -45,8 +45,8 @@ npm run serve
 
 The build is compatible with Vercel static hosting through `vercel.json`. Before production cutover:
 
-1. Create or confirm the source repository and production owner.
-2. Deploy a preview from this exact workspace and complete browser QA.
+1. Refresh GitHub authentication, push `agent/trust-first-rebuild`, and review the focused replacement pull request.
+2. Reconfirm the verified Vercel staging artifact and browser QA after any review changes.
 3. Confirm the current Durable configuration and export or rollback path.
 4. Confirm DNS, domain attachment, canonical host, and HTTPS behavior.
 5. Deploy production and verify every canonical route, 404 behavior, headers, forms, embeds, sitemap, and external links.
