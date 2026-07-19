@@ -271,14 +271,14 @@ const privacy = {
   path: '/privacy/',
   title: 'Privacy practices for aicoopai.com',
   description: 'Understand what information the replacement AiCoOpAI website handles, which third-party services are linked or embedded, and how to ask a privacy question.',
-  eyebrow: 'Effective July 16, 2026',
+  eyebrow: 'Effective July 18, 2026',
   heading: 'Privacy should be understandable.',
-  lede: 'This notice describes the data practices intended for this replacement website. It will be reviewed before production cutover and updated when the operating or hosting model changes.',
+  lede: 'This notice explains how the AiCoOpAI website handles information, which third-party services it uses, and the choices available to visitors.',
   schemaType: 'WebPage',
   body: `
     <section class="section"><div class="shell prose">
       <h2>Who operates this site</h2>
-      <p>AiCoOpAI is a Florida-focused AI collaboration and resource project associated with the Good Combinator ecosystem. Use the <a href="/connect/">Connect page</a> for privacy questions or requests. The production operator and mailing contact must be confirmed in this notice before launch.</p>
+      <p>AiCoOpAI is operated by Good Samaritan Institute, Inc., a Florida not-for-profit corporation. Its contact address is 900 North County Highway 393, Santa Rosa Beach, Florida 32459. Use the <a href="/connect/">Connect page</a> for privacy questions or requests.</p>
 
       <h2>Information handled by the website</h2>
       <p>The static pages do not provide member accounts, uploads, private messaging, or a first-party contact database. Hosting infrastructure may process routine request information such as IP address, device and browser details, requested page, referring page, timestamps, and security events. This information is used to deliver the site, prevent abuse, investigate errors, and maintain security.</p>
@@ -320,12 +320,15 @@ const terms = {
   path: '/terms/',
   title: 'Terms of use for aicoopai.com',
   description: 'Review the baseline terms for using the AiCoOpAI informational website, external resources, scheduling links, and public collaboration materials.',
-  eyebrow: 'Effective July 16, 2026',
+  eyebrow: 'Effective July 18, 2026',
   heading: 'Use the site thoughtfully.',
-  lede: 'These terms are an operational draft for the replacement website and require final review by the confirmed production operator before launch.',
+  lede: 'These terms govern use of aicoopai.com and the information, links, and ways to request a conversation provided through the site.',
   schemaType: 'WebPage',
   body: `
     <section class="section"><div class="shell prose">
+      <h2>Operator and acceptance</h2>
+      <p>aicoopai.com is operated by Good Samaritan Institute, Inc., 900 North County Highway 393, Santa Rosa Beach, Florida 32459. By accessing or using this site, you agree to these Terms. If you do not agree, do not use the site.</p>
+
       <h2>Informational purpose</h2>
       <p>AiCoOpAI provides general information, curated links, and ways to request a conversation. Site content is not legal, financial, investment, medical, engineering, employment, tax, or other professional advice. Obtain advice from an appropriately qualified professional for decisions that require it.</p>
 
@@ -347,11 +350,20 @@ const terms = {
       <h2>Availability and warranties</h2>
       <p>The site and its information are provided on an “as available” basis. Reasonable care is taken, but completeness, uninterrupted availability, fitness for a particular purpose, and error-free operation are not guaranteed. Report a factual or technical problem through the <a href="/connect/">Connect page</a>.</p>
 
-      <h2>Responsibility and disputes</h2>
-      <p>You remain responsible for decisions made using site content or external services. Final limitation-of-liability, governing-law, dispute, and operator provisions must be reviewed and approved by qualified counsel before production publication.</p>
+      <h2>Limitation of liability</h2>
+      <p>You remain responsible for decisions made using site content or external services. To the maximum extent permitted by law, Good Samaritan Institute, Inc. and its directors, officers, employees, volunteers, agents, and affiliates will not be liable for indirect, incidental, special, consequential, exemplary, or punitive damages, or for loss of data, profits, revenue, opportunity, or goodwill, arising from or relating to the site, site content, external services, or any conversation, resource, or introduction resulting from use of the site, even if advised that such damages were possible.</p>
+      <p>To the maximum extent permitted by law, their aggregate direct liability for all claims arising from or relating to the site will not exceed the greater of the amount you paid directly to Good Samaritan Institute, Inc. for use of the site during the 12 months before the event giving rise to the claim or $100 USD.</p>
+      <p>Nothing in these Terms limits or excludes liability for fraud, willful misconduct, gross negligence, or any liability or right that cannot lawfully be limited or waived. If applicable law does not allow a particular exclusion or limitation, that exclusion or limitation applies only to the maximum extent permitted by that law.</p>
+
+      <h2>Governing law and venue</h2>
+      <p>Florida law governs these Terms and any dispute arising from or relating to the site, without regard to conflict-of-law rules. Subject to rights that cannot lawfully be waived, exclusive venue lies in a state court located in Walton County, Florida, or the United States District Court with jurisdiction over Walton County, Florida. Each party consents to the personal jurisdiction of those courts.</p>
+
+      <h2>Informal dispute resolution</h2>
+      <p>Before filing a lawsuit, you and Good Samaritan Institute, Inc. must make a good-faith effort to resolve the dispute for 30 days. A written notice must identify the claimant, describe the facts and requested resolution, and be mailed to the operator address above with “Legal Notice” identified on the correspondence.</p>
+      <p>This 30-day process does not prevent either side from seeking urgent or injunctive relief or taking action needed to preserve a claim before a statutory or court deadline expires. These Terms do not require arbitration and do not waive class, representative, or jury rights.</p>
 
       <h2>Changes</h2>
-      <p>These terms may change when the site’s services or operator change. The effective date will be updated when a material revision is published. Continued use after a revision means the current published terms apply to that use.</p>
+      <p>These Terms may change when the site’s services or operator change. A material revision will receive a new effective date. The Terms published when you use the site apply to that use.</p>
     </div></section>
   `,
 };
