@@ -2,7 +2,7 @@
 
 This workspace contains a dependency-free static replacement for `aicoopai.com`. It implements the approved trust-first direction: a practical Florida AI community and resource hub that describes only services available today.
 
-The original Durable website remains live. The verified replacement is published on `agent/trust-first-rebuild` in the existing public `PerpetualRoyalty/aicoop-website` repository and is under review in [draft pull request #1](https://github.com/PerpetualRoyalty/aicoop-website/pull/1). The branch preserves the earlier prototype history and its MIT license. Read-only browser verification confirmed authenticated access to both the AiCoOpAI Durable workspace and the authoritative Namecheap DNS controls. Production still requires explicit cutover and legal approval.
+The original Durable website remains live while the verified replacement proceeds through its authorized production cutover. The replacement is published on `agent/trust-first-rebuild` in the existing public `PerpetualRoyalty/aicoop-website` repository and is under review in [pull request #1](https://github.com/PerpetualRoyalty/aicoop-website/pull/1). Good Samaritan Institute, Inc. is the confirmed operator. Doug Liles confirmed ownership of the Durable restore procedure and authorized the AiCoOpAI production cutover. The published legal language is an owner-approved, counsel-ready draft and must not be represented as attorney approved without actual attorney review.
 
 ## Requirements
 
@@ -45,12 +45,13 @@ npm run snapshot:live -- --out rollback/durable-public-YYYY-MM-DD
 
 ## Deployment and rollback
 
-The build is compatible with Vercel static hosting through `vercel.json`. Before production cutover:
+The build is compatible with Vercel static hosting through `vercel.json`. The authorized cutover sequence is:
 
-1. Review and merge draft pull request #1 after the operator and legal language are approved.
-2. Reconfirm the verified Vercel staging artifact and browser QA after any review changes.
-3. Preserve the authenticated Durable workspace and confirm its native export or restore procedure; the public snapshot alone is not a platform backup.
-4. Confirm cutover authority, then use the authenticated Namecheap account to update DNS and verify domain attachment, canonical host, and HTTPS behavior.
-5. Deploy production and verify every canonical route, 404 behavior, headers, forms, embeds, sitemap, and external links.
-6. Submit `/sitemap.xml` in Google Search Console and monitor removals, redirects, and indexing.
-7. Roll back to the prior verified deployment if any release gate fails.
+1. Publish and verify the confirmed operator and Florida legal language on staging.
+2. Review and merge pull request #1.
+3. Preserve the authenticated Durable workspace and verified rollback baseline under Doug Liles's restore procedure.
+4. Attach the apex and `www` domains to the verified Vercel project, then change only the Namecheap web-routing records Vercel requires.
+5. Preserve email forwarding, SPF, Google verification, Durable verification, and unrelated DNS records.
+6. Verify every canonical route, 404 behavior, headers, forms, embeds, sitemap, and external links on production.
+7. Submit `/sitemap.xml` in Google Search Console when authenticated access is available.
+8. Restore the recorded Durable routing immediately if a critical release gate fails.

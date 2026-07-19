@@ -81,3 +81,10 @@ A pre-cutover public rollback baseline captured 197 Durable responses with HTTP 
 ## Release decision
 
 The replacement artifact passes the technical release gates. Production cutover remains intentionally gated on the confirmed legal operator and mailing contact, counsel review of the operator/liability/governing-law terms, confirmation of the native Durable restore procedure, pull-request approval, and explicit domain-cutover authority. Unsupported legacy blog pages remain unpublished; their 189 URL-level evidence requirements are preserved in `content-audit/legacy-blog-inventory.csv`.
+
+## July 18 authorization follow-up
+
+- Good Samaritan Institute, Inc., 900 North County Highway 393, Santa Rosa Beach, Florida 32459, was confirmed as the production operator.
+- Doug Liles approved the court-based Florida legal design, confirmed ownership of the Durable restore procedure, and authorized the AiCoOpAI production cutover.
+- The legal copy remains accurately described as counsel-ready rather than attorney approved.
+- Production execution remains conditioned on the updated automated suite, staging browser verification, pull-request merge, exact Vercel DNS instructions, and the public acceptance gates.

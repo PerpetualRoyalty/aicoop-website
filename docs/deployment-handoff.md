@@ -29,19 +29,20 @@ The existing site at `https://aicoopai.com/` has not been changed. The staging a
 - authenticated read-only access confirmed for the authoritative Namecheap DNS controls
 - current Namecheap records confirmed before cutover: apex A to `172.66.0.42`, `www` CNAME to `websites.mydurable.com`, apex HTTP redirect to `www`, Google and Durable verification TXT records, and email-forwarding SPF
 
-## Required production decisions
+## Production decision record
 
-These are ownership decisions rather than code defects. Do not attach `aicoopai.com` until all are confirmed:
+The owner-controlled decisions are closed as follows:
 
-1. **Production operator:** provide the exact legal or individual operator name and a mailing or registered contact appropriate for the Privacy and Terms pages.
-2. **Legal approval:** have qualified counsel approve the operator, limitation-of-liability, governing-law, and dispute language. The public draft intentionally does not invent those provisions.
-3. **Platform rollback authority:** the public 197-response baseline, DNS evidence, Durable identifiers, and verified local archive are captured, and authenticated access to the correct Durable workspace is available. Confirm its native export or restore procedure and who is responsible for using it because a public snapshot is not a native account export.
-4. **Cutover authority:** confirm the person authorized to change the live domain and whether DNS or Durable settings must be removed or retained. Namecheap access is proven, but no DNS mutation is authorized until this decision is explicit.
-5. **Pull-request approval:** review and merge [draft pull request #1](https://github.com/PerpetualRoyalty/aicoop-website/pull/1) after the operator and legal language are approved.
+1. **Production operator:** Good Samaritan Institute, Inc., 900 North County Highway 393, Santa Rosa Beach, Florida 32459.
+2. **Legal language:** Doug Liles approved the court-based Florida design on July 18, 2026. The published language is counsel-ready and must not be labeled attorney approved without actual attorney review.
+3. **Platform rollback authority:** Doug Liles confirmed that he owns the Durable restore procedure. The authenticated Durable workspace, 197-response baseline, DNS evidence, and verified archive remain preserved.
+4. **Cutover authority:** Doug Liles explicitly authorized the AiCoOpAI production cutover. Scope is limited to the Vercel attachment and necessary Namecheap web-routing records.
+5. **DNS preservation:** email forwarding, SPF, Google verification, Durable verification, and unrelated DNS records remain unchanged.
+6. **Pull-request approval:** pull request #1 may be marked ready and merged after the updated policy tests and staging verification pass.
 
 ## Safe cutover sequence
 
-1. Insert the confirmed operator and counsel-approved language, then rerun `npm run check` and the browser checks.
+1. Publish the confirmed operator and owner-approved, counsel-ready language, then rerun `npm run check` and the browser checks.
 2. Review and merge draft pull request #1 into `main`.
 3. Recheck the verified rollback archive, confirm the Durable native restore procedure, and preserve the current Durable account plus live DNS/alias state.
 4. After explicit cutover approval, use the authenticated Namecheap account to attach `aicoopai.com` and `www.aicoopai.com` to the verified Vercel project without changing the build artifact.
