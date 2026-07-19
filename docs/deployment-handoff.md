@@ -21,11 +21,13 @@ The existing site at `https://aicoopai.com/` has not been changed. The staging a
 - inventory and risk classification of all 189 legacy blog URLs
 - isolated staging deployment and deployed browser/header verification
 - upload exclusions for the unfinished agreement and local audit artifacts
-- history-preserving local feature branch connected to the existing public `PerpetualRoyalty/aicoop-website` repository
+- history-preserving feature branch pushed to the existing public `PerpetualRoyalty/aicoop-website` repository
+- cleanly mergeable draft pull request #1 targeting `main`
 - existing MIT license retained from the prior repository
 - ignored 197-response Durable public baseline plus a verified SHA-256 archive in `rollback/`
 - authenticated read-only access confirmed for the AiCoOpAI Durable workspace and its connected `aicoopai.com` domain
-- current authoritative DNS recorded before cutover; the available Namecheap browser session is signed out
+- authenticated read-only access confirmed for the authoritative Namecheap DNS controls
+- current Namecheap records confirmed before cutover: apex A to `172.66.0.42`, `www` CNAME to `websites.mydurable.com`, apex HTTP redirect to `www`, Google and Durable verification TXT records, and email-forwarding SPF
 
 ## Required production decisions
 
@@ -34,15 +36,15 @@ These are ownership decisions rather than code defects. Do not attach `aicoopai.
 1. **Production operator:** provide the exact legal or individual operator name and a mailing or registered contact appropriate for the Privacy and Terms pages.
 2. **Legal approval:** have qualified counsel approve the operator, limitation-of-liability, governing-law, and dispute language. The public draft intentionally does not invent those provisions.
 3. **Platform rollback authority:** the public 197-response baseline, DNS evidence, Durable identifiers, and verified local archive are captured, and authenticated access to the correct Durable workspace is available. Confirm its native export or restore procedure and who is responsible for using it because a public snapshot is not a native account export.
-4. **Cutover authority:** confirm the person authorized to change the live domain and whether DNS or Durable settings must be removed or retained. The available Namecheap session is signed out, so authoritative DNS access has not been proven.
-5. **GitHub authentication:** complete the pending GitHub device authorization for `PerpetualRoyalty` so `agent/trust-first-rebuild` can be pushed and opened as a draft pull request against the existing public repository.
+4. **Cutover authority:** confirm the person authorized to change the live domain and whether DNS or Durable settings must be removed or retained. Namecheap access is proven, but no DNS mutation is authorized until this decision is explicit.
+5. **Pull-request approval:** review and merge [draft pull request #1](https://github.com/PerpetualRoyalty/aicoop-website/pull/1) after the operator and legal language are approved.
 
 ## Safe cutover sequence
 
 1. Insert the confirmed operator and counsel-approved language, then rerun `npm run check` and the browser checks.
-2. Push `agent/trust-first-rebuild` to `PerpetualRoyalty/aicoop-website` and review the draft pull request before merging to `main`.
+2. Review and merge draft pull request #1 into `main`.
 3. Recheck the verified rollback archive, confirm the Durable native restore procedure, and preserve the current Durable account plus live DNS/alias state.
-4. After the authorized owner has signed in to Namecheap, attach `aicoopai.com` and `www.aicoopai.com` to the verified Vercel project without changing the build artifact.
+4. After explicit cutover approval, use the authenticated Namecheap account to attach `aicoopai.com` and `www.aicoopai.com` to the verified Vercel project without changing the build artifact.
 5. Confirm HTTPS, apex and `www` canonicalization, security headers, every canonical route, 404, sitemap, social image, favicon, Calendly, and Google Form on the real domain.
 6. Confirm `http://aicoopai.com/` redirects to HTTPS; the existing Durable site currently returns HTTP 200 and does not meet this gate.
 7. Submit `https://aicoopai.com/sitemap.xml` in Google Search Console and monitor coverage, removed blog URLs, and crawl errors.

@@ -68,8 +68,8 @@ A pre-cutover public rollback baseline captured 197 Durable responses with HTTP 
 
 - The shared Chrome session was authenticated to Durable and the AiCoOpAI workspace was present.
 - Durable showed the website as published and `https://aicoopai.com` as the connected public domain.
-- The available Namecheap session redirected the domain-control URL to login, so authoritative DNS access and cutover authority remain unverified.
-- GitHub CLI authentication for `PerpetualRoyalty` remained invalid; device authorization was initiated but not completed during this audit.
+- A July 18 follow-up confirmed authenticated Namecheap access to the authoritative `aicoopai.com` Advanced DNS controls. The visible records matched the captured baseline: apex A `172.66.0.42`, `www` CNAME `websites.mydurable.com`, an apex HTTP redirect to `www`, verification TXT records, and email-forwarding SPF.
+- GitHub CLI authentication for `PerpetualRoyalty` was restored. The branch was pushed and opened as cleanly mergeable draft pull request #1 against `main`.
 - No DNS, domain, Durable, GitHub, or production-site setting was changed.
 
 ## Visual evidence
@@ -80,4 +80,4 @@ A pre-cutover public rollback baseline captured 197 Durable responses with HTTP 
 
 ## Release decision
 
-The replacement artifact passes the technical release gates. Production cutover remains intentionally gated on the confirmed legal operator and mailing contact, counsel review of the operator/liability/governing-law terms, confirmation of the native Durable restore procedure, completed GitHub authorization, authenticated Namecheap access, and explicit domain-cutover authority. Unsupported legacy blog pages remain unpublished; their 189 URL-level evidence requirements are preserved in `content-audit/legacy-blog-inventory.csv`.
+The replacement artifact passes the technical release gates. Production cutover remains intentionally gated on the confirmed legal operator and mailing contact, counsel review of the operator/liability/governing-law terms, confirmation of the native Durable restore procedure, pull-request approval, and explicit domain-cutover authority. Unsupported legacy blog pages remain unpublished; their 189 URL-level evidence requirements are preserved in `content-audit/legacy-blog-inventory.csv`.

@@ -2,7 +2,7 @@
 
 This workspace contains a dependency-free static replacement for `aicoopai.com`. It implements the approved trust-first direction: a practical Florida AI community and resource hub that describes only services available today.
 
-The original Durable website remains live. The verified replacement is prepared on `agent/trust-first-rebuild` and connected to the existing public repository at `PerpetualRoyalty/aicoop-website`. The branch preserves the earlier prototype history and its MIT license; GitHub authentication must be refreshed before the branch and draft pull request can be published. Read-only browser verification confirmed authenticated access to the AiCoOpAI Durable workspace and its connected `aicoopai.com` domain. The available Namecheap session is signed out, so DNS changes still require owner login and approval.
+The original Durable website remains live. The verified replacement is published on `agent/trust-first-rebuild` in the existing public `PerpetualRoyalty/aicoop-website` repository and is under review in [draft pull request #1](https://github.com/PerpetualRoyalty/aicoop-website/pull/1). The branch preserves the earlier prototype history and its MIT license. Read-only browser verification confirmed authenticated access to both the AiCoOpAI Durable workspace and the authoritative Namecheap DNS controls. Production still requires explicit cutover and legal approval.
 
 ## Requirements
 
@@ -47,10 +47,10 @@ npm run snapshot:live -- --out rollback/durable-public-YYYY-MM-DD
 
 The build is compatible with Vercel static hosting through `vercel.json`. Before production cutover:
 
-1. Refresh GitHub authentication, push `agent/trust-first-rebuild`, and review the focused replacement pull request.
+1. Review and merge draft pull request #1 after the operator and legal language are approved.
 2. Reconfirm the verified Vercel staging artifact and browser QA after any review changes.
 3. Preserve the authenticated Durable workspace and confirm its native export or restore procedure; the public snapshot alone is not a platform backup.
-4. Sign in to the authoritative Namecheap account, confirm cutover authority, and then verify DNS, domain attachment, canonical host, and HTTPS behavior.
+4. Confirm cutover authority, then use the authenticated Namecheap account to update DNS and verify domain attachment, canonical host, and HTTPS behavior.
 5. Deploy production and verify every canonical route, 404 behavior, headers, forms, embeds, sitemap, and external links.
 6. Submit `/sitemap.xml` in Google Search Console and monitor removals, redirects, and indexing.
 7. Roll back to the prior verified deployment if any release gate fails.
