@@ -1,67 +1,57 @@
-# AICoop.ai
+# AiCoOpAI website
 
-A cooperative platform where builders co-own the AI future. Based in Walton County, Florida.
+This workspace contains a dependency-free static replacement for `aicoopai.com`. It implements the approved trust-first direction: a practical Florida AI community and resource hub that describes only services available today.
 
-## Overview
+The original Durable website remains live while the verified replacement proceeds through its authorized production cutover. The replacement is published on `agent/trust-first-rebuild` in the existing public `PerpetualRoyalty/aicoop-website` repository and is under review in [pull request #1](https://github.com/PerpetualRoyalty/aicoop-website/pull/1). Good Samaritan Institute, Inc. is the confirmed operator. Doug Liles confirmed ownership of the Durable restore procedure and authorized the AiCoOpAI production cutover. The published legal language is an owner-approved, counsel-ready draft and must not be represented as attorney approved without actual attorney review.
 
-AICoop connects entrepreneurs, developers, and enterprise teams through two offerings:
+## Requirements
 
-- **Community** — Free collaborative space for resource sharing, mentorship, and developer support (virtual + in-person in Walton County, FL).
-- **Enterprise Copilot** — Private RAG-powered knowledge assistant that gives engineers cited answers from internal docs, repos, and wikis.
+- Node.js 22 or newer
+- No package installation is required
 
-## Tech Stack
-
-- Pure HTML/CSS/JS (no build step required)
-- [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) + [DM Sans](https://fonts.google.com/specimen/DM+Sans) via Google Fonts CDN
-- [Lucide Icons](https://lucide.dev) via unpkg CDN
-- Custom CSS (no Tailwind or framework dependency)
-- Intersection Observer API for scroll animations and counter effects
-
-## Features
-
-- Fully mobile-responsive (breakpoints at 1024 / 768 / 480px)
-- Tabbed product showcase (Community vs Enterprise)
-- FAQ accordion
-- Animated stat counters
-- Scroll-reveal animations
-- Sticky glassmorphism navbar
-- Analytics event stubs (ready to wire to GA4, Mixpanel, etc.)
-
-## Local Development
-
-No build tools needed. Open `index.html` in a browser:
+## Commands
 
 ```bash
-# Option 1: Direct open
-open index.html
-
-# Option 2: Local server (Python)
-python3 -m http.server 3000
-
-# Option 3: Local server (Node)
-npx serve .
+npm run build
+npm test
+npm run check
+npm run serve
+npm run snapshot:live -- --out rollback/durable-public-YYYY-MM-DD
 ```
 
-## Deployment
+`npm run build` writes the release to `dist/`. `npm run check` rebuilds, runs the automated tests, and audits the generated pages for broken links, metadata, heading structure, accessible controls, iframe titles, unsupported claims, and sitemap coverage. `npm run serve` exposes the built site at `http://127.0.0.1:4173` and returns a real 404 response for missing paths. `npm run snapshot:live` captures the current public Durable routes, response headers, and checksums into an ignored local rollback directory; it is not a substitute for a Durable account export.
 
-This is a static site — deploy anywhere:
+## Source structure
 
-- **GitHub Pages**: Push to `main`, enable Pages in repo settings
-- **Vercel**: `vercel --prod`
-- **Netlify**: Drag and drop the folder, or connect the repo
-- **Cloudflare Pages**: Connect repo, no build command needed
+- `src/content/pages.js` — approved public copy and page definitions
+- `src/render/` — escaping, shared layout, navigation, cards, and notices
+- `src/assets/` — visual system and progressive enhancement
+- `src/config/` — canonical site and security-header contracts
+- `scripts/build.mjs` — deterministic static build
+- `scripts/check-site.mjs` — release-site crawler and contract audit
+- `scripts/capture-live-baseline.mjs` — public pre-cutover snapshot and checksum manifest
+- `scripts/audit-legacy-content.mjs` — current blog sitemap inventory and risk classification
+- `content-audit/` — URL-level review queue for the 189 legacy blog pages
+- `test/` — Node built-in tests
+- `docs/` — approved design, implementation plan, QA evidence, and deployment handoff
 
-## Project Structure
+## Content rules
 
-```
-├── index.html          # Main landing page (complete, self-contained)
-├── community.html      # Community detail page
-├── enterprise.html     # Enterprise detail page
-├── README.md
-├── LICENSE
-└── .gitignore
-```
+- Do not publish a platform feature, partnership, event, outcome, testimonial, referral, earnings, or member claim without current evidence and permission.
+- Do not restore the Bonus page until the program, calculator, disclosure, and legal terms are complete and reviewed.
+- Do not publish or rely on `WORK TO EARN AGREEMENT.docx`; it is an unfinished MyFL.ai template retained only as an existing workspace artifact.
+- AI-assisted drafts require human factual review under the editorial policy.
+- Review legacy URLs individually before adding redirects.
 
-## License
+## Deployment and rollback
 
-MIT License — see [LICENSE](LICENSE) for details.
+The build is compatible with Vercel static hosting through `vercel.json`. The authorized cutover sequence is:
+
+1. Publish and verify the confirmed operator and Florida legal language on staging.
+2. Review and merge pull request #1.
+3. Preserve the authenticated Durable workspace and verified rollback baseline under Doug Liles's restore procedure.
+4. Attach the apex and `www` domains to the verified Vercel project, then change only the Namecheap web-routing records Vercel requires.
+5. Preserve email forwarding, SPF, Google verification, Durable verification, and unrelated DNS records.
+6. Verify every canonical route, 404 behavior, headers, forms, embeds, sitemap, and external links on production.
+7. Submit `/sitemap.xml` in Google Search Console when authenticated access is available.
+8. Restore the recorded Durable routing immediately if a critical release gate fails.
