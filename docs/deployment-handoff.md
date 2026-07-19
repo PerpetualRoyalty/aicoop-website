@@ -6,7 +6,7 @@ The replacement is built, tested, and deployed to the isolated Vercel staging pr
 
 `https://aicoopai-rebuild.vercel.app/`
 
-The existing site at `https://aicoopai.com/` has not been changed. The staging artifact uses production canonicals so the exact same build can be promoted after the remaining owner-controlled gates are closed.
+The existing site at `https://aicoopai.com/` has not been changed. The staging artifact uses production canonicals so the exact same build can be promoted after the remaining execution gates pass.
 
 ## What is complete
 
@@ -45,7 +45,7 @@ The owner-controlled decisions are closed as follows:
 1. Publish the confirmed operator and owner-approved, counsel-ready language, then rerun `npm run check` and the browser checks.
 2. Review and merge draft pull request #1 into `main`.
 3. Recheck the verified rollback archive, confirm the Durable native restore procedure, and preserve the current Durable account plus live DNS/alias state.
-4. After explicit cutover approval, use the authenticated Namecheap account to attach `aicoopai.com` and `www.aicoopai.com` to the verified Vercel project without changing the build artifact.
+4. Under the recorded cutover authorization, use the authenticated Namecheap account to attach `aicoopai.com` and `www.aicoopai.com` to the verified Vercel project without changing the build artifact.
 5. Confirm HTTPS, apex and `www` canonicalization, security headers, every canonical route, 404, sitemap, social image, favicon, Calendly, and Google Form on the real domain.
 6. Confirm `http://aicoopai.com/` redirects to HTTPS; the existing Durable site currently returns HTTP 200 and does not meet this gate.
 7. Submit `https://aicoopai.com/sitemap.xml` in Google Search Console and monitor coverage, removed blog URLs, and crawl errors.
